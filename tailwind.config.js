@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
@@ -6,6 +7,9 @@ export default {
         'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   theme: {
+    fontFamily:{
+      Dosis: ['Dosis', 'sans-serif']
+    },
     extend: {},
   },
   plugins: [
