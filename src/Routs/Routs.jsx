@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Leouat/Main";
 import Home from "../Leouat/componetn/Pages1/Home";
+import Listing from "../Leouat/componetn/Pages1/sechon/listing/listing";
 
 
   export  const router = createBrowserRouter([
@@ -13,7 +14,8 @@ import Home from "../Leouat/componetn/Pages1/Home";
             element:<Home></Home>
         },
         {
-            path:'/listing'
+            path:'/listing',
+            element:<Listing></Listing>
         }
       ]
     },
