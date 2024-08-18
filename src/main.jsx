@@ -9,11 +9,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { router } from './Routs/Routs';
+import Authpovadar from './Routs/firebase/Authpovadar/Authpovadar';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider>
+   <Authpovadar>
+   <ThemeProvider>
     <RouterProvider router={router} />
     </ThemeProvider>
+   </Authpovadar>
   </React.StrictMode>,
 )

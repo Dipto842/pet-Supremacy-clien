@@ -3,6 +3,7 @@ import img2 from '../../../../assets/AdobeStock_512789201_Preview.jpeg'
 import img3 from '../../../../assets/AdobeStock_323070505_Preview.jpeg'
 import img4 from '../../../../assets/AdobeStock_476874526_Preview.jpeg'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Home from './Home/Home';
 
 const Benar = () => {
     return (
@@ -33,6 +34,9 @@ Embrace Endless Love with Your New Furry Best Friend.
 
     </div>
 </section>
+<div>
+  <Home></Home>
+</div>
         </div>
     );
 };
