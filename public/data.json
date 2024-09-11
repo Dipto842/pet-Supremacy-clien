@@ -1,113 +1,72 @@
 [
-    {
-      "id": 1,
-      "name": "Buddy",
-      "age": 3,
-      "location": "New York",
-      "category": "Dog",
-      "image": "https://i.ibb.co/yhHc7GK/Dog1.webp",
-      "detailsUrl": "https://example.com/details/buddy",
-      "dateAdded": "2024-08-10",
-      "adopted": false
-    },
-    {
-      "id": 2,
-      "name": "Mittens",
-      "age": 2,
-      "location": "Los Angeles",
-      "category": "Cat",
-      "image": "https://i.ibb.co/N9qF6Nn/cat1.jpg",
-      "detailsUrl": "https://example.com/details/mittens",
-      "dateAdded": "2024-08-08",
-      "adopted": false
-    },
-    {
-      "id": 3,
-      "name": "Rex",
-      "age": 5,
-      "location": "Chicago",
-      "category": "Dog",
-      "image": "https://i.ibb.co/6wsF22h/dog.jpg",
-      "detailsUrl": "https://example.com/details/rex",
-      "dateAdded": "2024-07-20",
-      "adopted": true
-    },
-    {
-      "id": 4,
-      "name": "Fluffy",
-      "age": 4,
-      "location": "San Francisco",
-      "category": "Cat",
-      "image": "https://i.ibb.co/dty7hXj/cat2.webp",
-      "detailsUrl": "https://example.com/details/fluffy",
-      "dateAdded": "2024-08-01",
-      "adopted": false
-    },
-    {
-      "id": 5,
-      "name": "Bella",
-      "age": 6,
-      "location": "Miami",
-      "category": "Dog",
-      "image": "https://i.ibb.co/YjJPS43/Dog2.jpg",
-      "detailsUrl": "https://example.com/details/bella",
-      "dateAdded": "2024-08-05",
-      "adopted": false
-    },
-    {
-      "id": 6,
-      "name": "Charlie",
-      "age": 3,
-      "location": "Seattle",
-      "category": "Dog",
-      "image": "https://i.ibb.co/dkFhHBb/Dog3.webp",
-      "detailsUrl": "https://example.com/details/charlie",
-      "dateAdded": "2024-06-30",
-      "adopted": true
-    },
-    {
-      "id": 7,
-      "name": "Luna",
-      "age": 1,
-      "location": "Austin",
-      "category": "Cat",
-      "image": "https://i.ibb.co/0ChvTnN/cat3.webp",
-      "detailsUrl": "https://example.com/details/luna",
-      "dateAdded": "2024-08-07",
-      "adopted": false
-    },
-    {
-      "id": 8,
-      "name": "Max",
-      "age": 4,
-      "location": "Boston",
-      "category": "Dog",
-      "image": "https://i.ibb.co/b3T59KL/Dog4.jpg",
-      "detailsUrl": "https://example.com/details/max",
-      "dateAdded": "2024-08-03",
-      "adopted": false
-    },
-    {
-      "id": 9,
-      "name": "Oliver",
-      "age": 2,
-      "location": "Denver",
-      "category": "Cat",
-      "image": "https://i.ibb.co/1dMxd5r/cat4.jpg",
-      "detailsUrl": "https://example.com/details/oliver",
-      "dateAdded": "2024-05-25",
-      "adopted": true
-    },
-    {
-      "id": 10,
-      "name": "Sophie",
-      "age": 7,
-      "location": "Philadelphia",
-      "category": "Cat",
-      "image": "https://i.ibb.co/9cVwtdX/pexels-photo-1741205.webp",
-      "detailsUrl": "https://example.com/details/sophie",
-      "dateAdded": "2024-08-09",
-      "adopted": false
-    }
-  ]
-  
+  {
+    "id": "1a2b3c",
+    "petName": "Buddy",
+    "petImage": "https://example.com/images/buddy.jpg",
+    "maxDonationAmount": 500,
+    "donatedAmount": 250
+  },
+  {
+    "id": "4d5e6f",
+    "petName": "Whiskers",
+    "petImage": "https://example.com/images/whiskers.jpg",
+    "maxDonationAmount": 300,
+    "donatedAmount": 150
+  },
+  {
+    "id": "7g8h9i",
+    "petName": "Bella",
+    "petImage": "https://example.com/images/bella.jpg",
+    "maxDonationAmount": 450,
+    "donatedAmount": 400
+  },
+  {
+    "id": "j0k1l2",
+    "petName": "Charlie",
+    "petImage": "https://example.com/images/charlie.jpg",
+    "maxDonationAmount": 600,
+    "donatedAmount": 450
+  },
+  {
+    "id": "m3n4o5",
+    "petName": "Luna",
+    "petImage": "https://example.com/images/luna.jpg",
+    "maxDonationAmount": 350,
+    "donatedAmount": 200
+  },
+  {
+    "id": "p6q7r8",
+    "petName": "Max",
+    "petImage": "https://example.com/images/max.jpg",
+    "maxDonationAmount": 550,
+    "donatedAmount": 300
+  },
+  {
+    "id": "s9t0u1",
+    "petName": "Daisy",
+    "petImage": "https://example.com/images/daisy.jpg",
+    "maxDonationAmount": 400,
+    "donatedAmount": 250
+  },
+  {
+    "id": "v2w3x4",
+    "petName": "Rocky",
+    "petImage": "https://example.com/images/rocky.jpg",
+    "maxDonationAmount": 650,
+    "donatedAmount": 500
+  },
+  {
+    "id": "y5z6a7",
+    "petName": "Milo",
+    "petImage": "https://example.com/images/milo.jpg",
+    "maxDonationAmount": 480,
+    "donatedAmount": 350
+  },
+  {
+    "id": "b8c9d0",
+    "petName": "Zoe",
+    "petImage": "https://example.com/images/zoe.jpg",
+    "maxDonationAmount": 520,
+    "donatedAmount": 400
+  }
+]

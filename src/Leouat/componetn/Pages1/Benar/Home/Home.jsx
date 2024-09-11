@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthConst } from "../../../../../Routs/firebase/Authpovadar/Authpovadar";
+
 
 
 const Home = () => {
+
     const [data,setData]=useState([])
     const [selektpet,setselektpet]=useState('All')
     useEffect(()=>{
@@ -20,6 +23,8 @@ const Home = () => {
     const filtar = sotdet.filter(animel=>
 (selektpet==='All'||animel.category===selektpet)
     )
+    const { user, logout } = useContext(AuthConst)
+    console.log('a', user)
     return (
         <div>
              <div className='text-center mt-36'>
@@ -31,9 +36,9 @@ const Home = () => {
         <option value="All">All</option>
         <option value="Dog">Dog</option>
         <option value="Cat">Cat</option>
-        <option value="Cat">Rabbit</option>
-        <option value="Cat">Fish</option>
-        <option value="Cat">bird</option>
+        <option value="Rabbit">Rabbit</option>
+        <option value="Fish">Fish</option>
+        <option value="bird">bird</option>
      
         </select>
      </div>
@@ -57,7 +62,7 @@ const Home = () => {
      </div>
      <div className="flex items-center justify-between">
          <span className="text-3xl font-bold text-gray-900 dark:text-white">age : {list.age}</span>
-        <Link to={`/petditels/${list._id}`}> <button href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</button></Link>
+        <Link to={`/petditels/${list._id}`}> <button href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Pet Details</button></Link>
      </div>
  </div>
 </div>

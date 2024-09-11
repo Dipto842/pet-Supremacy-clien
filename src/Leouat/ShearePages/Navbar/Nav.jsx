@@ -6,8 +6,11 @@ import 'swiper/css';
 import { AuthConst } from '../../../Routs/firebase/Authpovadar/Authpovadar';
 const Nav = () => {
     const { user,out } = useContext(AuthConst)
+    
+    
+    
     const naveling = <>
-        <Link > 
+        <Link to={'/'} > 
 
             <li className=
             "block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >
@@ -18,12 +21,16 @@ const Nav = () => {
             <li className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >Pet Listing</li>
         </Link>
       
-        <Link>
+        <Link to={'/Donation'}>
             <li className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >Donation
                 Campaigns</li>
         </Link>
 
-        <Link > 
+
+
+
+
+        <Link to={'/about'} > 
 
 <li className=
 "block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >
@@ -35,14 +42,12 @@ const Nav = () => {
 "block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >
     Call</li>
 </Link>
+       
 
        {
-        user ?  <Link to={'/logen'}>
+        !user && <Link to={'/logen'}>
         <li className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >Login</li>
-    </Link> :  <Link to={'/Register'}>
-    
-    <li className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" >Register</li>
-</Link>
+    </Link> 
    
        }
 
@@ -62,28 +67,38 @@ const hendelout = ()=>{
     )
     )
 }
-    return (
+ const  isAdmin =false
+return (
         <div>
 
 
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-around mx-auto p-4">
                     <div className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={img} className="h-8" alt="Flowbite Logo" />
                         <div className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">pets</div>
                     </div>
-                { user ?     <>
+                { user &&     <>
                 
-                    <div className=' md:order-2 '>
-                        <button onClick={() => setclick((open) => !open)} className="w-10 ">
+                    <div className=' md:order-2 items-center'>
+                        <button onClick={() => setclick((open) => !open)} className="">
                             <img
-                                className='rounded-full'
+                                className='rounded-full border  w-14 h-14 '
                                 src={user.photoURL } />
                         </button>
 
                         {click && <div className='absolute'>
 
-                           <Link to={'/userDesbod/user'}> <h1>dashboard</h1></Link>
+                            {
+                user && isAdmin && <li><Link to={'Admin'}>DASHBOARD</Link></li>
+
+            
+            }
+            {
+                user && !isAdmin && <li><Link to={'Dashboard'}>DASHBOARD</Link></li>
+
+            
+            }
                             <button onClick={hendelout}>logout</button>
                         </div>
 
@@ -92,7 +107,7 @@ const hendelout = ()=>{
 
 
                     </div> 
-                </>: <Link  className='text-black'>Login</Link>
+                </>
 
                 }
                     <div className="items-center justify-between  w-full md:flex md:w-auto md:order-1" id="navbar-cta">

@@ -1,8 +1,9 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword,  signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import auth from "../firebase.config";
+
 
 
 export const AuthConst = createContext(null)
@@ -11,7 +12,10 @@ const Authpovadar = ({children}) => {
 
 const [user , setuser]=useState([])
 const [loding ,setloding]=useState(true)
-
+const provider = new GoogleAuthProvider();
+const Goole = ()=>{
+  return  signInWithPopup(auth, provider)
+}
 
 const singin =  (email, password)=>{
   return  createUserWithEmailAndPassword(auth,email, password)
@@ -25,13 +29,22 @@ const singin =  (email, password)=>{
     }
 
 const out = ()=>{
-    signOut(auth)
+  return  signOut(auth)
 }
 
+
+const userupred=(displayName,photoURL)=>{
+  return  updateProfile(auth.currentUser, {
+        displayName: displayName, photoURL:photoURL
+      
+    })
+}
 
 useEffect(()=>{
  const undefen =  onAuthStateChanged(auth,(currentUser)=>{
 setuser(currentUser)
+console.log(user);
+
 console.log('carenuser',currentUser);
 
     })
@@ -48,7 +61,9 @@ console.log('carenuser',currentUser);
         loding,
         logein,
         singin,
-        out
+        out,
+        userupred,
+        Goole
     }
     return (
         <AuthConst.Provider value={authinfo}>

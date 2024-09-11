@@ -11,11 +11,14 @@ import React from "react";
 
 
 
+
 const Petitels = () => {
 
-    const data = useLoaderData()
 
-    const { name, age, location, category, image, dateAdded, adopted } = data
+    const data = useLoaderData()
+console.log(data);
+
+    const { name, age, location, category, image, dateAdded, adopted ,Long,Short } = data
 
     const styled = {
         position: 'absolute' , 
@@ -39,6 +42,32 @@ const Petitels = () => {
           setOpen(false);
         };
     
+        const hedelsubmit=(e)=>{
+            e.preventDefault()
+            const from = e.target
+            const Name = from.Name.value
+            const email = from.email.value
+            const Nambar = from.number.value
+            const Address = from.Address.value
+            const total = {Name,email,Nambar,Address}
+            console.log(Name,Address,Nambar,email,)
+
+            fetch('http://localhost:5000/petadot',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(total)
+            })
+            
+            .then(res=>res.json())
+            .then(data=>console.log(data))
+        }
+
+       
+       
+    
+
     return (
         <div className=" w-[27%] mt-48 mx-auto">
 
@@ -54,13 +83,21 @@ const Petitels = () => {
                         <h1> location: {location}</h1>
                     </div>
                     <div className="flex gap-10">
-                        <h1>Date: {dateAdded}</h1>
-                        <h1>Age: {age}</h1>
+                        <h1 className=" ">Date: {dateAdded}</h1>
+                        <h1 >Age: {age}</h1>
                     </div>
+                    <div>
+        {
+            Long ?    <p className=" font-normal text-gray-700 dark:text-gray-400"><span className="font-semibold">Long description:</span> <span className="text-[14px]"></span> {Long}</p> :  <p className=" font-normal text-gray-700 dark:text-gray-400"><span className="font-semibold">Short description:</span> <span className="text-[14px]"></span> {Short}</p>
+           
+        }
+         
+
+            
+        </div>
 
 
-
-                    <button onClick={handleOpen}>Open modal</button>
+                    <button  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none mt-3 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleOpen}> adopt</button>
 <Modal
   open={open}
   onClose={handleClose}
@@ -69,10 +106,66 @@ const Petitels = () => {
 >
   <Box sx={styled}>
     <Typography id="modal-modal-title" variant="h6" component="h2">
-      Text in a modal
+      
     </Typography>
     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+    <div>
+           <div>
+            
+
+<div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img className="rounded-t-lg" src={image} alt="" />
+    </a>
+    <div className="p-5">
+        <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
+        </a>
+       <div>
+        
+
+<div className=" w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <form className="space-y-6 " onSubmit={hedelsubmit} action="#">
+       
+        <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+            <input type="text" name="Name" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name" required />
+        </div>
+        <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+            <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+        </div>
+        <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Nambar</label>
+            <input type="number" placeholder='number' name="number" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required />
+        </div>
+        <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Address</label>
+            <input type="" name="Address" id="password" placeholder="Address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+       
+
+        <div className="flex items-start">
+            <div className="flex items-start">
+               
+             
+            </div>
+           
+       <div>
+        <button  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">submit</button>
+       </div>
+        </div>
+       
+    </form>
+</div>
+
+       </div>
+     
+    </div>
+</div>
+
+           </div>
+        </div>
     </Typography>
   </Box>
 </Modal>
