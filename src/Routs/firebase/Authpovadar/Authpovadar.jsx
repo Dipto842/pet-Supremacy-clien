@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import auth from "../firebase.config";
+import Axscor from "../../../UseHock/axseccor/Axscor";
 
 
 
 export const AuthConst = createContext(null)
 
 const Authpovadar = ({children}) => {
-
+const ax =Axscor()
 const [user , setuser]=useState([])
 const [loding ,setloding]=useState(true)
 const provider = new GoogleAuthProvider();
@@ -43,6 +44,20 @@ const userupred=(displayName,photoURL)=>{
 useEffect(()=>{
  const undefen =  onAuthStateChanged(auth,(currentUser)=>{
 setuser(currentUser)
+const userinpho= {
+  email:currentUser?.email
+}
+if(currentUser){
+ax.post('/jwt',userinpho)
+.then(res=>{
+  if(res.data.token){
+    localStorage.setItem('access-Token',res.data.token)
+  }
+})
+}
+else{
+  localStorage.removeItem('access-Token')
+}
 console.log(user);
 
 console.log('carenuser',currentUser);

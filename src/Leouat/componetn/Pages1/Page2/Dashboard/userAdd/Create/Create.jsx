@@ -4,46 +4,81 @@ import { Controller, useForm } from "react-hook-form";
 import { Select } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import Useaxoxpublick from "../../../../../../../UseHock/Useaxoxpublick";
+import Swal from "sweetalert2";
 
-
+const imgUplod =import .meta.env.VITE_IMG_UPLOD
+const imgapi = `https://api.imgbb.com/1/upload?key=${imgUplod}`
 const Create = () => {
     const {user}=useContext(AuthConst)
-
+const ax = Useaxoxpublick()
     const {
         register,
         handleSubmit,
-        control,
+       
         formState: { errors }
     } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data.Category.value)
+    const onSubmit = async(data) => {
+        
+      
+        const userimg={
+            image:data.image[0]
+        }
+
+        const res = await ax.post(imgapi,userimg,{
+            headers: {
+                "content-type": "multipart/form-data"
+              }
+              
+        })
+        console.log(res.data);
+      if(res.data.success){
         const userinpho = {
-            name:data.name,
-            age:data.age,
-            image:data.image,
+            img:res.data.data.display_url,
+            amount:data.amount,
+           
+            Name:data.Nmae,
+            date:data.date,
             location:data.location,
-            Category:data.Category.value,
+            
             Short:data.Short,
             Long:data.Long,
             email:user.email,
-            adopted:false
+            Pause:true
+           
+           
         }
+      
+        const ress = await ax.post('/Donation',userinpho)
+        console.log(ress.data);
+        if(ress.data.insertedId){
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your Donation has been saved",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Your Donation has been not saved",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+        }
+       
+      }
       
     }
 
 
-    console.log();
+   
 
 
-    const options = [
-        { value: 'Dog', label: 'Dog' },
-        { value: 'Cat', label: 'Cat' },
-        { value: 'Rabbit', label: 'Rabbit' },
-        { value: 'Fish', label: 'Fish' },
-        { value: 'Rabbit', label: 'bird' },
-
-    ];
+ 
     return (
         <div>
          <div className="ml-[20rem]">
@@ -55,25 +90,28 @@ const Create = () => {
                     <div className=" grid grid-cols-2 items-center gap-5 w-3/6 mt-6 mx-[10rem] ">
                         <div>
                             {/* 1 */}
-                            <h1 className="text-lg font-bold ">Maximum amount
+                            <h1 className="text-lg font-bold ">Name
                             </h1>
-                            <input type="text" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border w-[20rem] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="amount"   {...register("name",{required:true})} />
+                            <input type="text" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border w-[20rem] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name"   {...register("Nmae",{required:true})} />
                             {errors.name && <p>{errors.name.message}</p>}
                         </div>
                         <div>
                             {/* 2 */}
                             <h1 className="ml-24 text-lg font-bold">Last date</h1>
-                            <input type="date" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  ml-24 w-[20rem] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age"  {...register("age")} required />
+                            <input type="date" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  ml-24 w-[20rem] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age"  {...register("date")} required />
                         </div>
                         <div className="">
                             {/* 3 */}
-                            <h1 className="text-lg font-bold">Pet image</h1>
-                            <input type="file" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   w-[41rem] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="image"  {...register("image")} required />
+                            <h1 className="text-lg font-bold">Maximum amount</h1>
+                            <input type="number" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[20rem]  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="amount"  {...register("amount")} required />
                         </div>
-                        <div>
-                            {/* 4 */}
-                          
+                       
+                        <div className="">
+                            {/* 3 */}
+                            <h1 className="text-lg font-bold ml-24">Pet image</h1>
+                            <input type="file" id="number-input" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ml-24  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[20rem]" placeholder="image"  {...register("image")} required />
                         </div>
+                     
                         
                     </div>
                     <div className=" mx-[10rem] w-[20rem]">

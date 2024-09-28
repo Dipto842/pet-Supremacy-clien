@@ -15,7 +15,8 @@ const Sosallogin = () => {
 console.log('tay',data.user)
 const userInpho= {
     email:data.user?.email,
-    name:data.user?.displayName
+    name:data.user?.displayName,
+    image:data.user?.photoURL
 }
 Axpublik.post('/userInpho',userInpho)
 .then(res=>{

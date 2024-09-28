@@ -12,11 +12,18 @@ import About from "../Leouat/componetn/Pages1/Akstachechon/About/About";
 import Donation from "../Leouat/componetn/Pages1/Donation/Donation";
 import Ditels from "../Leouat/componetn/Pages1/Donation/Donation-Ditels/Ditels";
 import Dashboard from "../Leouat/componetn/Pages1/Page2/Dashboard/Dashboard";
-import Admin from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/Admin";
+import Admin from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/AllUser";
 import Add from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/Add";
 import MyAdd from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/myAdd/myAdd";
 import Update from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/myAdd/Update/Update";
 import Create from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/Create/Create";
+import MyDonation from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/Create/MyDonationCampaigns/MyDonation";
+import Adoption from "../Leouat/componetn/Pages1/Page2/Dashboard/userAdd/Adoption/Adoption";
+import AllUser from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/AllUser";
+import AllPat from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/AllPats/AllPat";
+import Donations from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/Donations/Donations";
+import DonationsUpred from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/Donations/DonationsUprede/DonationsUpred";
+import CheckoutForm from "../Leouat/componetn/Pages1/Donation/Donation-Ditels/Card pement/CheckoutForm";
 
 
 export const router = createBrowserRouter([
@@ -44,7 +51,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/petditels/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/petlist/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/petli/${params.id}`),
         element: <Petitels></Petitels>,
       },
       {
@@ -59,7 +66,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/Donation_Ditels/:id',
-        // loader:({params})=>fetch(`http://localhost:5000/Donation/${params.id}`),
+        loader:({params})=>fetch(`http://localhost:5000/Donati/${params.id}`),
         element: <Ditels></Ditels>
       },
 
@@ -90,21 +97,44 @@ export const router = createBrowserRouter([
       {
         path: 'Update/:id',
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/petlis/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/petli/${params.id}`)
 
+      },
+      {
+        path: 'Mydonation',
+        element: <MyDonation></MyDonation>
+       
+
+      },
+      {
+        path: 'Adoption',
+        element: <Adoption></Adoption>,
+        loader: ()=>fetch('http://localhost:5000/petadot')
+       
+
+      },
+      {
+        path: 'Alluser',
+        element: <AllUser></AllUser>      
+      },
+      {
+        path: 'Allpat',
+        element: <AllPat></AllPat>   
+      },
+      
+      {
+        path: 'Donation',
+        element:   <Donations></Donations> 
+      },
+      {
+        path: 'DonationUpred/:id',
+        loader:({params})=>fetch(`http://localhost:5000/Donati/${params.id}`),
+        element:   <DonationsUpred></DonationsUpred>
       }
-    
+     
     ]
   },
-  {
-    path: 'Admin',
-    element: <Admin></Admin>,
-    children: [
-      {
-
-      }
-    ]
-  }
+ 
 
 
 

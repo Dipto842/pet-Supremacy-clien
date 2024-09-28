@@ -21,7 +21,7 @@ const axus = Useaxoxpublick()
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data.Category.value)
+        console.log(data)
         const userinpho = {
             name:data.name,
             age:data.age,

@@ -25,7 +25,7 @@ const [Data,setData]=useState([])
     
     const petfiltar = sotdet.filter(pet=>
         (pet.name.includes(selektitem)||selektitem==='')&&
-        (selekcategory==='All'||pet.category===selekcategory)
+        (selekcategory==='All'||pet.Category===selekcategory)
         
     )
     
@@ -44,9 +44,12 @@ const [Data,setData]=useState([])
         value={selekcategory}
         onChange={e=>setcatagori(e.target.value)}
         >
-        <option value="All">All</option>
-        <option value="Dog">Dog</option>
-        <option value="Cat">Cat</option>
+      <option value="All">All</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Rabbit">Rabbit</option>
+                    <option value="Fish">Fish</option>
+                    <option value="bird">bird</option>
      
         </select>
      </div>

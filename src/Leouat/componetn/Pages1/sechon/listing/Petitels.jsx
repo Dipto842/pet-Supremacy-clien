@@ -6,7 +6,9 @@ import { useLoaderData } from "react-router-dom";
 
 
 import Modal from '@mui/material/Modal';
-import React from "react";
+import React, { useContext } from "react";
+import { AuthConst } from "../../../../../Routs/firebase/Authpovadar/Authpovadar";
+import Swal from "sweetalert2";
 
 
 
@@ -14,7 +16,7 @@ import React from "react";
 
 const Petitels = () => {
 
-
+const {user}=useContext(AuthConst)
     const data = useLoaderData()
 console.log(data);
 
@@ -46,11 +48,12 @@ console.log(data);
             e.preventDefault()
             const from = e.target
             const Name = from.Name.value
-            const email = from.email.value
+            const Email = from.Email.value
             const Nambar = from.number.value
-            const Address = from.Address.value
-            const total = {Name,email,Nambar,Address}
-            console.log(Name,Address,Nambar,email,)
+            const Address = from.Address.value,
+            UserEmali=user.email
+            const total = {Name,Email,Nambar,Address,UserEmali}
+            console.log(Name,Email, Address,Nambar)
 
             fetch('http://localhost:5000/petadot',{
                 method:'POST',
@@ -61,7 +64,18 @@ console.log(data);
             })
             
             .then(res=>res.json())
-            .then(data=>console.log(data))
+            .then(data=>{
+                if(data.insertedId){
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+                handleClose()
+            })
         }
 
        
@@ -69,7 +83,7 @@ console.log(data);
     
 
     return (
-        <div className=" w-[27%] mt-48 mx-auto">
+        <div className=" lg:w-[27%] mt-48 mx-auto">
 
             <h1 className="flex  flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl  font-semibold">
                 <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={image} alt="" />
@@ -129,11 +143,11 @@ console.log(data);
        
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
-            <input type="text" name="Name" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name" required />
+            <input type="text" name="Name" id="email" value={user.displayName} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name" required />
         </div>
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+            <input type="email" name="Email" value={user.email} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
         </div>
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Nambar</label>

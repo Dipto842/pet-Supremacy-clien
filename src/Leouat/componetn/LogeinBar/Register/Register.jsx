@@ -32,7 +32,8 @@ const Register = () => {
         userupred(data.displayName,data.photoURL)
         const userinpho={
           name:data.displayName,
-          email:data.email
+          email:data.email,
+          image: data.photoURL
         }
 Axpublik.post('/userInpho',userinpho)
 .then((res)=>{

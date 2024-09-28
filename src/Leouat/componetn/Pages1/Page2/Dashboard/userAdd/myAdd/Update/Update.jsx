@@ -18,6 +18,8 @@ import Swal from "sweetalert2";
 const Update = () => {
 
       const {_id} = useLoaderData()
+      console.log(_id);
+      
 
 
 
@@ -42,7 +44,7 @@ const axus = Useaxoxpublick()
 
 
     const onSubmit = (data) => {
-        console.log(data.Category.value)
+       
         const userinpho = {
             name:data.name,
             age:data.age,
