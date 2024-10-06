@@ -13,11 +13,12 @@ const Donations = () => {
     const { isPending, error, data = [], refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: async () => {
+            refetch()
             const res = await ax.get('/Donation')
             return res.data
         }
-
     })
+   
     const HendelPause=(e)=>{
         const Paus= false
         setPause(Paus)

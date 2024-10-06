@@ -45,7 +45,12 @@ const ax = Useaxoxpublick()
             Short:data.Short,
             Long:data.Long,
             email:user.email,
-            Pause:true
+            Pause:true,
+            price:0,
+            paymentIntentName:null,
+            paymentIntentEmail:null,
+            paymentIntentDate:null,
+
            
            
         }

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { createContext } from "react";
 import auth from "../firebase.config";
 import Axscor from "../../../UseHock/axseccor/Axscor";
+import Axpublick from "../../../UseHock/Axpublik/Axpublick";
 
 
 
 export const AuthConst = createContext(null)
 
 const Authpovadar = ({children}) => {
-const ax =Axscor()
+const ax =Axpublick()
 const [user , setuser]=useState([])
 const [loding ,setloding]=useState(true)
 const provider = new GoogleAuthProvider();
@@ -45,7 +46,7 @@ useEffect(()=>{
  const undefen =  onAuthStateChanged(auth,(currentUser)=>{
 setuser(currentUser)
 const userinpho= {
-  email:currentUser?.email
+  email:currentUser.email
 }
 if(currentUser){
 ax.post('/jwt',userinpho)

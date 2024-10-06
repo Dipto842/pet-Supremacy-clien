@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import fackdata from '../../../../../public/data.json'
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link } from 'react-router-dom';
 import Axscor from '../../../../UseHock/axseccor/Axscor';
-import { useQuery } from '@tanstack/react-query';
-import { list } from 'postcss';
+
 
 const Donation = () => {
     const [data, setData] = useState([])
@@ -26,16 +25,16 @@ const Donation = () => {
             })
 
     }, [])
-    useEffect(() => {
-        fetch(`http://localhost:5000/paymentIntentinph`)
-            .then(res => res.json())
-            .then(lode => {
-                console.log('amsssssssssss', lode);
-            setlit(lode)
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/paymentIntentinph`)
+    //         .then(res => res.json())
+    //         .then(lode => {
+    //             console.log('amsssssssssss', lode);
+    //         setlit(lode)
                 
-            })
+    //         })
 
-    }, [])
+    // }, [])
 
   
     console.log('amsssssssssss', litm);
@@ -100,7 +99,7 @@ const Donation = () => {
 
                                     <div className="flex items-center justify-between">
                                         <span className=" bg-blue-100 text-blue-800  font-semibold  py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 text-[15px]">donatedAmount : 
-                                                         
+                                                         {item.price}
                                                          
                                                          </span>
                                         <Link to={`/Donation_Ditels/${item._id}`}> <button href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Donation details</button></Link>
@@ -112,9 +111,7 @@ const Donation = () => {
 
 
                     }
-                      {
-                                                                litm.map(list=><p>{list.paymentIntentamount}</p>)
-                                                            }
+                   
                                                          </div>
                  <div>
                                                           

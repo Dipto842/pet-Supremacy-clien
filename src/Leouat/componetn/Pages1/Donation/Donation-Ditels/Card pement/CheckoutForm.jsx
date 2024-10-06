@@ -17,7 +17,7 @@ const CheckoutForm = ({data}) => {
 
   const ax = Axscor()
 console.log('ami',data)
-const { _id}=data
+const { _id,price}=data
 
 
 
@@ -83,11 +83,18 @@ console.log(stringClientSecret);
     else{
       console.log('mmmm',paymentIntent);
       if(paymentIntent.status==="succeeded"){
+       
+
+  
+
+  
+
+       
         const paymentInpho={
-          name: user?.displayName ,
-          email:user?.email,
-          Date:new Date(),
-          paymentIntentamount : paymentIntent.amount,
+          paymentIntentName: user?.displayName,
+          paymentIntentEmail:user?.email,
+          paymentIntentDate:new Date(),
+          price :paymentIntent.amount,
           Id:_id
           
         }
@@ -98,7 +105,7 @@ console.log(stringClientSecret);
           showConfirmButton: false,
           timer: 1500
         });
-const res = ax.post('/paymentIntent',paymentInpho)
+const res = ax.patch(`/DonationU/${_id}`,paymentInpho)
 console.log(res);
 
 

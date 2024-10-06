@@ -10,7 +10,7 @@ const Axscor = () => {
     })
     axioxPubll.interceptors.request.use(function(confirg){
         const token = localStorage.getItem('access-Token')
-        confirg.headers.Authorization=`Bearer ${token}`
+        confirg.headers.Authorization=`Benar ${token}`
         return confirg
     },function(error){
         return Promise.reject(error)
@@ -19,8 +19,8 @@ const Axscor = () => {
 
     axioxPubll.interceptors.response.use(function(response){
         return response
-    },(error)=>{
-        const status= error.response.status
+    },async (error)=>{
+        
 
         // if(status===401||status===403){
            
