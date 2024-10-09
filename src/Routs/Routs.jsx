@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/petditels/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/petli/${params.id}`),
+        loader: ({ params }) => fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/petli/${params.id}`),
         element: <Petitels></Petitels>,
       },
       {
@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
       {
         path: '/Donation',
         element: <Donation></Donation>,
-        // loader: fetch('http://localhost:5000/Donation')
+        // loader: fetch('https://b9-battle-for-supremacy-sarvar.vercel.app/Donation')
 
       },
       {
         path: '/Donation_Ditels/:id',
-        loader:({params})=>fetch(`http://localhost:5000/Donati/${params.id}`),
+        loader:({params})=>fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/Donati/${params.id}`),
         element: <Ditels></Ditels>
       },
 
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
       {
         path: 'Update/:id',
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/petli/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/petli/${params.id}`)
 
       },
       {
@@ -109,7 +109,7 @@ export const router = createBrowserRouter([
       {
         path: 'Adoption',
         element: <Adoption></Adoption>,
-        loader: ()=>fetch('http://localhost:5000/petadot')
+        loader: ()=>fetch('https://b9-battle-for-supremacy-sarvar.vercel.app/petadot')
        
 
       },
@@ -128,7 +128,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'DonationUpred/:id',
-        loader:({params})=>fetch(`http://localhost:5000/Donati/${params.id}`),
+        loader:({params})=>fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/Donati/${params.id}`),
         element:   <DonationsUpred></DonationsUpred>
       }
      

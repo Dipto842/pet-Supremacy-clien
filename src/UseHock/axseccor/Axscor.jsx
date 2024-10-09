@@ -6,7 +6,7 @@ const Axscor = () => {
 
  
     const axioxPubll=axios.create({
-        baseURL:'http://localhost:5000'
+        baseURL:'https://b9-battle-for-supremacy-sarvar.vercel.app'
     })
     axioxPubll.interceptors.request.use(function(confirg){
         const token = localStorage.getItem('access-Token')

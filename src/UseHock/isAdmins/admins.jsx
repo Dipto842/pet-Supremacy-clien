@@ -6,7 +6,7 @@ import Axscor from "../axseccor/Axscor";
 const Useadmins = () => {
     const {user}=useContext(AuthConst)
     const ax = Axscor()
-    const { data:isAdmin = [], refetch } = useQuery({
+    const { data:isAdmin = [] } = useQuery({
         queryKey: ['isAdmin',user.email],
         queryFn: async () => {
             const res = await ax.get(`/admin/${user.email}`)

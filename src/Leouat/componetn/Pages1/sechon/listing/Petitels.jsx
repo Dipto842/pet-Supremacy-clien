@@ -55,7 +55,7 @@ console.log(data);
             const total = {Name,Email,Nambar,Address,UserEmali}
             console.log(Name,Email, Address,Nambar)
 
-            fetch('http://localhost:5000/petadot',{
+            fetch('https://b9-battle-for-supremacy-sarvar.vercel.app/petadot',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'

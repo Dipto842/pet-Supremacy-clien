@@ -32,7 +32,7 @@ const MyAdd = () => {
     if (error) return console.log(error);
 
     // useEffect(()=>{
-    //     fetch(`http://localhost:5000/petlist/${user.email}`)
+    //     fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/petlist/${user.email}`)
     //     .then(res=>res.json())
     //     .then(data=>{
     //         setdataenty(data)

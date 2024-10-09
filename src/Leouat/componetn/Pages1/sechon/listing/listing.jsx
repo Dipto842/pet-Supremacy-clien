@@ -7,7 +7,7 @@ const [Data,setData]=useState([])
     const [selektitem,setselekt]=useState('')
     const [selekcategory,setcatagori]=useState('All')
     useEffect(()=>{
-        fetch(`http://localhost:5000/petlist`)
+        fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/petlist`)
         .then(res=>res.json())
         .then(lode=>{
             console.log('amijjjjjjjjjj',lode);

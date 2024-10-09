@@ -16,7 +16,7 @@ const Donation = () => {
     const ax = Axscor()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/Donation`)
+        fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/Donation`)
             .then(res => res.json())
             .then(lode => {
                 console.log('amijjjjjjjjjj', lode);
@@ -26,7 +26,7 @@ const Donation = () => {
 
     }, [])
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/paymentIntentinph`)
+    //     fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/paymentIntentinph`)
     //         .then(res => res.json())
     //         .then(lode => {
     //             console.log('amsssssssssss', lode);
