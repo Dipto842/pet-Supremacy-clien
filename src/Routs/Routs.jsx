@@ -24,6 +24,7 @@ import AllPat from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/AllPat
 import Donations from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/Donations/Donations";
 import DonationsUpred from "../Leouat/componetn/Pages1/Page2/Dashboard/AdminDsbod/Donations/DonationsUprede/DonationsUpred";
 import CheckoutForm from "../Leouat/componetn/Pages1/Donation/Donation-Ditels/Card pement/CheckoutForm";
+import PrivetRoot from "../Leouat/PrivetRoot/PrivetRoot";
 
 
 export const router = createBrowserRouter([
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/listing',
-        element: <Listing></Listing>
+        element: <PrivetRoot><Listing></Listing></PrivetRoot>
       },
 
       {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
       {
         path: '/petditels/:id',
         loader: ({ params }) => fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/petli/${params.id}`),
-        element: <Petitels></Petitels>,
+        element: <PrivetRoot><Petitels></Petitels>,</PrivetRoot>
       },
       {
         path: '/about',
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
       {
         path: '/Donation_Ditels/:id',
         loader:({params})=>fetch(`https://b9-battle-for-supremacy-sarvar.vercel.app/Donati/${params.id}`),
-        element: <Ditels></Ditels>
+        element: <PrivetRoot><Ditels></Ditels></PrivetRoot>
       },
 
 
@@ -78,15 +79,15 @@ export const router = createBrowserRouter([
   },
   {
     path: 'Dashboard',
-    element: <Dashboard></Dashboard>,
+    element:<PrivetRoot> <Dashboard></Dashboard></PrivetRoot>,
     children: [
       {
         path: 'Add',
-        element: <Add></Add>
+        element:<PrivetRoot> <Add></Add></PrivetRoot>
       },
       {
         path: 'myAdd',
-        element: <MyAdd></MyAdd>,
+        element: <PrivetRoot><MyAdd></MyAdd>,</PrivetRoot>
 
       },
       {

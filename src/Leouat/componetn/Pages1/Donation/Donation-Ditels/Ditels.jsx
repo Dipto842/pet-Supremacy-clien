@@ -25,7 +25,7 @@ const {user}=useContext(AuthConst)
     const data = useLoaderData()
 
 
-    const { amount, img, Name, date, Short, Long, email,Pause  } = data
+    const { amount, img, Name, date, Short, Long,Pause  } = data
 
     const styled = {
         position: 'absolute' , 
